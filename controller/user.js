@@ -26,8 +26,8 @@ exports.addUser = async (req, res, next) => {
 }
 
 
-const generatetoken = (id) => {
-    return jwt.sign({ userId: id }, '63761322346352645343213');
+const generatetoken = (id, name) => {
+    return jwt.sign({ userId: id, username: name }, '63761322346352645343213');
 }
 
 
@@ -42,7 +42,7 @@ exports.loginUser = async (req, res, next) => {
                     return res.status(400).json({ user: user });
                 }
                 if (result === true) {
-                    res.status(201).json({ token: generatetoken(user.id) });
+                    res.status(201).json({ token: generatetoken(user.id, user.name) });
                 }
                 if (result === false) {
                     return res.status(200).json({ result });

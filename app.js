@@ -15,10 +15,12 @@ app.use(helmet());
 
 /////routes////////////////////////
 const userrouter=require('./routes/user');
+const msgrouter=require('./routes/messages');
 
 
 //////////////////////
 app.use('/chatapp',userrouter)
+app.use('/message',msgrouter);
 
 
 

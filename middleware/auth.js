@@ -1,13 +1,13 @@
-const User=require('../models/user-details');
+const User=require('../models/user');
 const jwt=require('jsonwebtoken');
 
 
 
 exports.authenticate=(req,res,next)=>{
     const token=req.header('Authorization');
-    const user=jwt.verify(token,process.env.JWT_STRING);
+    const user=jwt.verify(token,'63761322346352645343213');
 
-    User.findByPk(user.userId)
+    User.findById(user.userId)
         .then((user)=>{
             req.user=user;
             next();
